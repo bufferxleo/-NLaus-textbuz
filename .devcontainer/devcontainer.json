@@ -1,0 +1,53 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/docker-existing-docker-compose
+{
+  "name": "tb-web-ui",
+  "dockerComposeFile": "docker-compose.yml",
+  "service": "tb-web-ui",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "features": {
+    "ghcr.io/devcontainers/features/common-utils:2": {},
+    "ghcr.io/devcontainers-contrib/features/zsh-plugins:0": {},
+    "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {}
+  },
+  // Configure tool-specific properties.
+  "customizations": {
+    // Configure properties specific to VS Code.
+    "vscode": {
+      // Set *default* container specific settings.json values on container create.
+      "settings": {
+        "terminal.integrated.shell.linux": "/usr/bin/zsh"
+      },
+      // Add the IDs of extensions you want installed when the container is created.
+      "extensions": [
+        "adam-bender.commit-message-editor",
+        "IronGeek.vscode-env",
+        "mhutchie.git-graph",
+        "donjayamanne.githistory",
+        "eamodio.gitlens",
+        "VisualStudioExptTeam.vscodeintellicode",
+        "VisualStudioExptTeam.intellicode-api-usage-examples",
+        "Zignd.html-css-class-completion",
+        "PKief.material-icon-theme",
+        "bmewburn.vscode-intelephense-client",
+        "GitHub.vscode-pull-request-github",
+        "aaron-bond.better-comments",
+        "xabikos.JavaScriptSnippets",
+        "formulahendry.auto-rename-tag",
+        "formulahendry.auto-close-tag",
+        "esbenp.prettier-vscode",
+        "Postman.postman-for-vscode",
+        "humao.rest-client",
+        "bierner.emojisense",
+        "Codium.codium"
+      ]
+    }
+  },
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [5173, 8080, 5432],
+  "postCreateCommand": "sudo chmod a+x .devcontainer/dev_config/init_script_commands.sh && .devcontainer/dev_config/init_script_commands.sh",
+  //"postStartCommand": "npm run start:dev",
+  // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
+  "remoteUser": "vscode"
+  //"containerUser": "vscode"
+}

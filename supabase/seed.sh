@@ -1,0 +1,1 @@
+psql -h 127.0.0.1 -p 54322 -d postgres -U postgres -f supabase/seed.sql

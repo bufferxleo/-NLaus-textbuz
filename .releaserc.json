@@ -1,0 +1,41 @@
+{
+  "branches": ["main"],
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    [
+      "semantic-release-jira-notes",
+      {
+        "jiraHost": "netlabs.atlassian.net",
+        "preset": "conventionalcommits",
+        "ticketPrefixes": ["NDA", "HIT", "NAPL"],
+        "presetConfig": {
+          "types": [
+            { "type": "feat", "section": "Features" },
+            { "type": "fix", "section": "Bug Fixes" },
+            {
+              "type": "build",
+              "section": "Dependencies Updates",
+              "hidden": false
+            }
+          ]
+        }
+      }
+    ],
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/npm",
+    "@semantic-release/git",
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "dist/**/*",
+            "label": "Distribution"
+          }
+        ]
+      }
+    ]
+  ],
+  "repositoryUrl": "https://github.com/Netlabs-Australia-Pty-Ltd/napl-ts-logger"
+}
